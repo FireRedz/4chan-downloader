@@ -1,9 +1,9 @@
 import requests
 import wget
+import os
 
 r = requests.session()
-
-
+curDir = os.getcwd()
 
 def getImages(directory):
 
@@ -18,24 +18,24 @@ def getImages(directory):
 	threadData = requestData.json()['posts']
 
 	for x in range(len(threadData)):
-		#print('http://i.4cdn.org/',threadBoard'/','.jpg')
+
+		if not os.path.exists(directory+'/'+str(threadBoard)): # create dir for Thread
+			print('Creating folder')
+			os.mkdir(directory+''+str(threadBoard))
+
+		if not os.path.exists(directory+'/'+str(threadBoard)+'/'+str(threadID)): # create folder inside threadboard
+			print('Creating folder')
+			os.mkdir(directory+''+str(threadBoard)+'/'+str(threadID))
+
+
+
 		if 'tim' in threadData[x]:
 			print('Downloading', threadData[x]['no'],str(threadData[x]['ext']) ,'| Size is ', str(int(threadData[x]['fsize']/1000)),'kb')
-			#print(threadData[x]['tim'])
-			wget.download('https://i.4cdn.org/'+str(threadBoard)+'/'+str(threadData[x]['tim'])+ str(threadData[x]['ext']), directory+'/'+str(threadData[x]['tim'])+str(threadData[x]['ext']))
-
+			#wget.download('https://i.4cdn.org/'+str(threadBoard)+'/'+str(threadData[x]['tim'])+ str(threadData[x]['ext']), directory+'/'+str(threadBoard)+'/'+str(threadID)+'/'+str(threadData[x]['tim'])+str(threadData[x]['ext']))
+			os.system("aria2c "+'https://i.4cdn.org/'+str(threadBoard)+'/'+str(threadData[x]['tim'])+ str(threadData[x]['ext']) +" -d "+directory+'\\'+str(threadBoard)+'\\'+str(threadID)+ ' -x 10')
+			#print("aria2c "+'https://i.4cdn.org/'+str(threadBoard)+'/'+str(threadData[x]['tim'])+ str(threadData[x]['ext']) +" -d "+directory+'\\'+str(threadBoard)+'\\'+str(threadID))
 		else:
-			#print(threadData[x]['name'])
-			print('Not image found. Skipping')
+			print('Skipping')
 
-
-def setDirectory():
-	print('Download to where?')
-	usrDir = input('> ')
-	return usrDir
-
-
-
-usrDir = setDirectory()
-getImages(usrDir)
+getImages(os.getcwd())
 
