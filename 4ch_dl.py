@@ -2,15 +2,11 @@ import requests
 import os
 
 r = requests.session()
-curDir = os.getcwd()
 
 def getImages(directory):
-
-
 	threadLink = input('> ').split('/')
 	threadBoard = threadLink[3]
 	threadID = threadLink[5]
-
 
 	requestData = r.get('https://a.4cdn.org/'+threadBoard+'/thread/'+threadID+'.json')
 	threadData = requestData.json()['posts']
@@ -24,8 +20,6 @@ def getImages(directory):
 		if not os.path.exists(directory+'/'+str(threadBoard)+'/'+str(threadID)): # create folder inside threadboard
 			print('Creating folder')
 			os.mkdir(directory+''+str(threadBoard)+'/'+str(threadID))
-
-
 
 		if 'tim' in threadData[x]:
 			print('Downloading', threadData[x]['no'],str(threadData[x]['ext']) ,'| Size is ', str(int(threadData[x]['fsize']/1000)),'kb')
