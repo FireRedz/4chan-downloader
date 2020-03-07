@@ -14,7 +14,7 @@
 ### Features
 
  * Downloads will automatically placed on its thread folder (ex: CurrentDirectory/[boardname]/[threadID]/[imageID].jpg)
- * Aria2c (faster download)
+ * Aria2c (faster download (maybe))
  * Why are you reading its just shitty python script theres no cool _features_ in it
 
 
