@@ -2,7 +2,7 @@
  Download 4chan images and videos using python
 
 ## Requirements
- Requests
+ > pip install requests
 
 ## How to use
  Make sure you have [aria2c](https://github.com/aria2/aria2/releases/tag/release-1.35.0) installed and added to your path 
