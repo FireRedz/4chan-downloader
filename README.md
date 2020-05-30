@@ -19,6 +19,6 @@
 
 
 
-#### spaghetti code
+#### ur code is shit
  stfu
 
