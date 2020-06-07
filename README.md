@@ -20,5 +20,4 @@
 
 
 #### ur code is shit
- stfu
-
+ yes it is, what u gon do about it binch
